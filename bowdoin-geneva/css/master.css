@@ -1,0 +1,46 @@
+@charset "UTF-8";
+/* CSS Document */
+
+#graphic-container { font-family:Georgia, "Times New Roman", Times, serif; position: relative; overflow: hidden; height: 250px; border-bottom: 0px solid black; }
+#graphic-container img { width:100%; max-width:425px; max-height: 250px; }
+#graphic-container div.item { width:100%; border-bottom:1px solid #CCC; height: 100%; overflow: hidden; }
+#graphic-container div.img-piece { width:90px; position: absolute; top : 20px; left: 15px; }
+#graphic-container div.img-piece img.iconic { width:100%; }
+#graphic-container div.txt-piece { width: 30%; position: relative; left: 120px; top: 10px; }
+#graphic-container div.txt-piece .headline {color:#000; font-size:1.7em; font-family:"Miller Headline Bold", "Times New Roman", Times, Georgia, serif; }
+#graphic-container div.txt-piece .txt { }
+#graphic-container div.txt-piece ul {vertical-align:baseline; font: normal 62.5%;}
+#graphic-container div.txt-piece ul li {list-style-type: square; color: #9B1518; margin: 0 0 0 1.6em; font-size: 1.3em;  }
+#graphic-container div.txt-piece ul li a {color:#666; font-weight:bold;  text-decoration:none; font-size:62.5%; line-height:1em;}
+#graphic-container div.txt-piece ul li a:hover{color:#000;}
+#graphic-container div.txt-piece .more { text-transform:uppercase; color:#9B1518; font-family: Helvetica, Arial, sans-serif; font-size: 0.8em; }
+#graphic-container div.exp-piece { width: 400px; position: absolute; top: 0px; right: 0px; }
+#graphic-container div.exp-piece img { width:100%; }
+
+#graphic-nav { border-bottom: 1px solid black; height: 70px; margin-bottom: 10px;}
+#graphic-nav div { list-style: none; float: left;}
+#graphic-nav div img.iconic { width: 60px; margin: 0px 10px; }
+
+#scrolldown { text-transform: uppercase; text-align:center; font-size: 1.1em; color: #fff; background: #999; font-family: "Benton Sans Bold", Arial, Helvetica, sans-serif; padding: 5px;}
+
+@media only screen and (min-width: 500px) and (max-width: 800px) {
+	#graphic-container { height: 400px;  }
+	#graphic-container div.img-piece img.iconic { width: 40%; }
+	#graphic-container div.txt-piece { left: 60px; width: 80%; }
+	#graphic-container div.exp-piece { min-width: 340px; width: 70%; top: auto; bottom:0px; }
+	
+	#graphic-nav { height: 60px;}
+	#graphic-nav div img.iconic { width: 45px; }
+}
+
+@media only screen and (max-width: 500px) {
+	#graphic-container { height: 360px; }
+	#graphic-container div.img-piece { top: 10px; left: 10px; 	}
+	#graphic-container div.img-piece img.iconic { width:40%; }
+	#graphic-container div.txt-piece { width:75%; left: 60px; }
+	#graphic-container div.exp-piece { min-width: 260px; width: 70%; top: auto; bottom:0px;}
+	#graphic-container div.exp-piece img{ width:100%; }
+
+	#graphic-nav { height: 50px;}
+	#graphic-nav div img.iconic { margin: 0px 5px; width:40px; }
+}

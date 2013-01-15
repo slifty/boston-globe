@@ -1,0 +1,29 @@
+#skrollr-height-frame {
+	position: fixed;
+	height: 50%;
+	width: 100%;
+}
+#skrollr-width-frame {
+	margin: auto;
+	width: 780px;
+}
+
+#skrollr-body div.item { position: absolute; top: 0px; }
+#skrollr-body div.img-piece { }
+#skrollr-body div.img-piece img.iconic { position: absolute; }
+#skrollr-body div.headline { position: absolute; }
+#skrollr-body div.txt-piece { }
+#skrollr-body div.txt { position: absolute; }
+#skrollr-body div.more { }
+#skrollr-body div.exp-piece { }
+#skrollr-body div.exp-piece img { position: relative; right: 0px; }
+
+
+
+@media only screen and (min-width: 500px) and (max-width: 800px) {
+	#skrollr-width-frame { width: 80%; }
+}
+
+@media only screen and (max-width: 500px) {
+	#skrollr-width-frame { width: 80%; }
+}

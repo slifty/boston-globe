@@ -1,0 +1,23 @@
+#map { width: 749px; height: 600px; }
+#map h1 { font-size: 1.3em; margin: 0px; }
+#map p { margin: 5px 0px; }
+#map p.notes { color: #999; font-style: italic;}
+
+.popup {}
+.tags { height: 30px; margin: 0px; padding: 0px; }
+.tags .tag { height: 20px; width: 20px; margin-right: 5px; float: left; list-style: none; background-size: 100%; background-repeat: no-repeat;}
+.tags .tag.age_1 { display: none; }
+.tags .tag.age_2 { display: none; }
+.tags .tag.age_3 { display: none; }
+.tags .tag.age_4 { display: none; }
+.tags .tag.ownership_1 { display: none; }
+.tags .tag.ownership_2 { background-image: url('img/private.png'); }
+.tags .tag.ownership_3 { background-image: url('img/private.png'); }
+.tags .tag.price_1 { display: none;}
+.tags .tag.price_2 { background-image: url('img/paid.png'); }
+.tags .tag.grade_1 { background-image: url('img/green_circle.png'); }
+.tags .tag.grade_2 { background-image: url('img/blue_square.png'); }
+.tags .tag.grade_3 { background-image: url('img/black_diamond.png'); }
+.tags .tag.parking_1 { background-image: url('img/no_parking.png'); }
+.tags .tag.parking_2 { background-image: url('img/no_parking.png'); }
+.tags .tag.parking_3 { display: none; }
