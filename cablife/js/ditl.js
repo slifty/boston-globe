@@ -80,7 +80,7 @@ $(function() {
 		}
 
 		var layer = L.layerGroup(features);
-		layer.addTo(map);
+		//layer.addTo(map);
 
 		// Start the animation
 		var h = 5;
@@ -89,6 +89,7 @@ $(function() {
 		var speed = 100;
 		var active_route = null;
 		var marker = null;
+		var markers = [];
 		var tick = function() {
 			// Update the time
 			s += 5;
@@ -97,19 +98,52 @@ $(function() {
 			m = (m >= 60)?m-60:m;
 			s = (s >= 60)?s-60:s;
 			var time = h + ":" + m + ":" + s;
+			var route = getRouteAtTime(time);
 
-			// Update the marker
-			if(marker == null) {
-				marker = new L.Marker(getPositionAtTime(time));
-				marker.addTo(map);
-			} else {
-				if (L.DomUtil.TRANSITION) {
-					console.log(marker);
-					if (marker._icon) { marker._icon.style[L.DomUtil.TRANSITION] = ('all ' + speed + 'ms linear'); }
-					if (marker._shadow) { marker._shadow.style[L.DomUtil.TRANSITION] = ('all ' + speed + 'ms linear'); }
-    			}
-				marker.setLatLng(getPositionAtTime(time));
+			// // Update the marker
+			// if(marker == null) {
+			// 	marker = new L.Marker(getPositionAtTime(time));
+			// 	marker.addTo(map);
+			// } else {
+			// 	if (L.DomUtil.TRANSITION) {
+			// 		console.log(marker);
+			// 		if (marker._icon) { marker._icon.style[L.DomUtil.TRANSITION] = ('all ' + speed + 'ms linear'); }
+			// 		if (marker._shadow) { marker._shadow.style[L.DomUtil.TRANSITION] = ('all ' + speed + 'ms linear'); }
+//  			}
+			// 	marker.setLatLng(getPositionAtTime(time));
+			// }
+
+			if(route != active_route) {
+				for (var x in markers) {
+					map.removeLayer(markers[x]);
+				}
+				if(active_route) {
+					var points = [];
+					for(var x in active_route.route_data.steps) {
+						var step = active_route.route_data.steps[x];
+						var line = L.Polyline.fromEncoded(step.polyline.points);
+						points = points.concat(line.getLatLngs().slice(x == 0?0:1));
+					}
+					
+					var multiline = new L.Polyline(points)
+					if(active_route.table_data.fare == 0) {
+						multiline.options.color = "#990000";
+					}
+					multiline.addTo(map);
+				}
+				markers = [];
 			}
+
+
+			marker = new L.Circle(getPositionAtTime(time), 10, {
+				color: (route.table_data.fare==""?"#900":"#009"),
+				opacity: .3,
+				fillOpacity: .3,
+				clickable: false
+			});
+			marker.addTo(map);
+			markers.push(marker);
+
 
 			map.panTo([marker.getLatLng().lat,marker.getLatLng().lng], 500);
 			map.whenReady(function() {
@@ -117,7 +151,6 @@ $(function() {
 			})
 
 			// Update the notebook
-			var route = getRouteAtTime(time);
 			if(route != active_route) {
 				if(route.table_data.fare != "") {
 					$note = $("<li />")
