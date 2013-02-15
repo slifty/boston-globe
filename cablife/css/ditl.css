@@ -1,0 +1,16 @@
+* { border: 0px solid black; }
+#ditl { height: 700px; width: 1000px; margin: auto; }
+#map { float: left; height:400px; width:400px; }
+#clock { float: left; height: 100px; width: 400px; }
+#dash { float: left; height: 100px; width: 300px; }
+#notes { float: left; }
+
+#notes ol { margin: 0px; padding: 0px; }
+#notes ol li { list-style: none; height: 40px;}
+#notes ol li.head { height: 15px; }
+#notes ol li div { float: left; font-family: Comic Sans, Comic Sans MS, cursive;}
+#notes ol li.head div { font-family: verdana; font-weight: bold; font-size: 10px;}
+#notes ol li div.start { width: 80px; }
+#notes ol li div.description { width: 200px; font-size: 10px;}
+#notes ol li div.end { width: 80px; }
+#notes ol li div.fare { width: 100px; }

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Merge</title>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=geometry&sensor=false"></script>
+		<script src="js/jquery-1.9.0.min.js"></script>
+		<script src="js/tabletop.js"></script>
+
+		<script>
+			var MERGE = [];
+			$(function() {
+				//We are caching these directions
+				Tabletop.init( {
+					key: '0AljhJM9N24t2dFBGZEFZdXZMMDNRLTVVYWhqRnEtbnc',
+					callback: function(table_data, tabletop) {
+						for(var x in table_data) {
+							(function(x) {
+								$.ajax({
+									data: {
+										origin: table_data[x].startlocation,
+										destination: table_data[x].endlocation,
+										sensor: false
+									},
+									dataType:"json",
+									method:"GET",
+									url:"http://maps.googleapis.com/maps/api/directions/json",
+								})
+								.done(function(route_data) {
+									console.log(route_data);
+									var item = {};
+									item.route_data = route_data.routes[0].legs[0];
+									item.table_data = table_data[x];
+									MERGE[x] = item;
+									$("body").text(JSON.stringify(MERGE));
+								})
+							})(x);
+						}
+					},
+					simpleSheet: true
+				})
+			});
+		</script>
+	<body>
+	</body>
+</html>
