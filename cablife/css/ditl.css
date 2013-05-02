@@ -1,16 +1,121 @@
-* { border: 0px solid black; }
-#ditl { height: 700px; width: 1000px; margin: auto; }
-#map { float: left; height:400px; width:400px; }
-#clock { float: left; height: 100px; width: 400px; }
-#dash { float: left; height: 100px; width: 300px; }
-#notes { float: left; }
+/*
+Universal overrides
+-------------------------------------------------- */
 
-#notes ol { margin: 0px; padding: 0px; }
-#notes ol li { list-style: none; height: 40px;}
-#notes ol li.head { height: 15px; }
-#notes ol li div { float: left; font-family: Comic Sans, Comic Sans MS, cursive;}
-#notes ol li.head div { font-family: verdana; font-weight: bold; font-size: 10px;}
-#notes ol li div.start { width: 80px; }
-#notes ol li div.description { width: 200px; font-size: 10px;}
-#notes ol li div.end { width: 80px; }
-#notes ol li div.fare { width: 100px; }
+.teaser { font-size: 12px; font-style: italic; margin-top: 10px; }
+.section-nav {display: none;}
+div.article {width: 100%; margin: 0; padding-top: 35px; }
+.aside  {display: none !important;}
+.interactive-body {float: left; width: 100%;}
+.byline { display: none; }
+
+#sourceAndCredit {
+  clear: both;
+  padding: 1em 0 2em 0;
+  font: normal 90% Georgia, "Times New Roman", Times, serif;
+}
+
+#sourceAndCredit p {
+  margin: 0;
+  padding: 0;
+}
+
+#sourceAndCredit .source {
+  float: left;
+  color: #000000;
+  font-size: 0.85em;
+  font-weight: bold;
+}
+
+#sourceAndCredit .credit {
+  text-align: right;
+  text-transform: uppercase;
+  color: #999;
+  font-size: 0.6em;
+}
+
+
+
+* { border: 0px solid black; }
+.appContainer { width: 100%; }
+.explainer { font-size: 1.25em; font-family: "Miller Headline Roman", "Times New Roman", Times, Georgia, serif; max-width: 90%; }
+
+#content { width: 1080px; margin-left: auto;margin-right: auto; }
+
+#left_container{ float: left; width: 500px; }
+#map_container{ position: relative; height: 478px; width: 100%; border: 1px #bbb solid; }
+#map { height: 100%; width: 100%; }
+#ur_map_container { position: absolute; top: 0px; right: 0px; z-index: 9999;  width: 75px; }
+#clock { text-align: center; padding: 3px; background: #FFF; font-size: 14px; border: 1px solid #bbb; border-top: 0px; border-right: 0px; font-family: "Benton Sans Bold", Arial, Helvetica, sans-serif; }
+#legend {}
+#legend .type { font-size: 10px; text-align: center; font-family: "Benton Sans Bold", Arial, Helvetica, sans-serif; }
+#legend .type.hired { background: #80CC80; display: none;}
+#legend .type.available { background: #CC8099; display: block; }
+
+.appContainer.hired #legend .type.hired { background: #80CC80; display: block; }
+.appContainer.hired #legend .type.available { background: #80CC80; display: none;}
+
+
+#narrative { position: absolute; bottom: 0px; width: 100%; font-size: 14px; background: #fff; z-index: 9999; border-top: 1px solid #bbbbbb; }
+#narrative .details { text-align: center; padding: 5px; font-style: italic; vertical-align: middle; }
+#narrative .title {font-weight: bold; background: #DDDDDD; padding: 5px; font-size: 12px; }
+
+#dash { float: left; width: 500px; text-align: center; margin-top: 10px; }
+#dash #miles { float: left; width: 30%; margin-left: 10px; }
+#dash #fares { float: left; width: 30%; margin-left: 10px; }
+#dash #expenses { float: left; width: 30%; margin-left: 10px; }
+#dash .title { text-transform: uppercase; margin-bottom: 0.25em; border-bottom: 1px solid #CBCBCB; }
+#dash .value { font-size: 2.0em; color: #aa0016; }
+
+#timeline { border: 1px solid #BBBBBB; width: 100%; height: 20px; float: left; cursor: pointer; border-top: none;}
+#timeline .progress { background-color: #aa0016; height: 100%; width: 0%; }
+
+#notes { float: left; border: 1px #bbb solid; width: 500px; height: 500px; margin-left: 50px; overflow: hidden; margin-top: -1px;}
+#header { height: 30px; margin: 0px; }
+#header tr { border-bottom: #bbb solid 1px; font-size: 12px; }
+#header tr th { padding: 7px; font-weight: bold; text-align: left; background: #ddd; }
+#header tr th.start, #ledger tr td.start { width: 60px;}
+#header tr th.description, #ledger tr td.description { width: 265px; }
+#header tr th.end, #ledger tr td.end { width: 60px; }
+#header tr th.fare, #ledger tr td.fare { width: 60px; }
+
+#ledger { max-height: 500px; overflow: auto; margin: 0px; }
+#ledger tr { border-bottom: #bbb solid 1px; font-size: 12px; height:39px ;}
+#ledger tr td { padding: 7px; }
+#ledgerAnimationHelper { height: 39px; }
+#ledger tr td.description .startDescription { color: #600; }
+#ledger tr td.description .endDescription { color: #600; }
+
+@media only screen and (min-width: 800px) and (max-width: 1080px) {
+	#content { width: 90%; }
+	#left_container { width: 45%; }
+	#narrative { font-size: 12px;  }
+	#notes { width: 50%; margin-left: 3%; }
+	#dash { width: 100%; }
+	#dash .value { font-size: 2.5em; }
+}
+
+@media only screen and (min-width: 800px) and (max-width: 900px ) {
+	#narrative { font-size: 12px; }
+}
+
+@media only screen and (min-width: 500px) and (max-width: 799px ) {
+	#content { width: 500px; }
+	#map_container { height: 400px; }
+	#notes {margin-left: 0px; height: 79px;}
+	#header tr th { padding: 1px 7px; }
+	#ledger tr { height: 49px; }
+	#dash .value { font-size: 2.0em; }
+}
+
+@media only screen and (max-width: 499px) {
+	#content { width: 100%; }
+	#left_container { width: 100%; }
+	#map_container { height: 300px;}
+	#narrative { font-size: 13px; }
+	#notes { width: 100%; margin-left: 0px; height: 79px; }
+	#dash { width: 100%; }
+	#header tr th { padding: 1px 7px; }
+	#ledger tr { height: 49px; }
+	#dash .value { font-size: 1.5em; }
+}

@@ -3,24 +3,78 @@
 	<head>
 		<title>Day in the life</title>
 		<link rel="stylesheet" href="css/reset.css" />
-		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4/leaflet.css" />
+		<link rel="stylesheet" type="text/css" href="http://prdedit.bostonglobe.com/css/globe-basic.css" id="basic-css">
+		<!--[if gte IE 6]><link href="http://prdedit.bostonglobe.com/css/html5reset.css,globe-globals.css,globe-masthead.css,globe-nav.css,globe-nav-menus.css,globe-saved.css,globe-main.css,globe-footer.css,globe-print.css" rel="stylesheet"><![endif]--> 
+		<!--[if !IE]><!--><link href="http://prdedit.bostonglobe.com/css/html5reset.css,globe-globals.css,globe-masthead.css,globe-nav.css,globe-nav-menus.css,globe-saved.css,globe-main.css,globe-footer.css,globe-print.css" rel="stylesheet" media="only all"><!--<![endif]--> 
+		<link rel="stylesheet" type="text/css" href="http://prdedit.bostonglobe.com/css/globe-trialHeaders.css" id="trial-banner-css">
+
+		<link rel="stylesheet" type="text/css" href="http://cache.boston.com/multimedia/graphics/js/leaflet.css"/>
+		<link rel="stylesheet" type="text/css" href="http://cache.boston.com/multimedia/graphics/js/leaflet.ie.css"/>
+
+		<link rel="stylesheet" href="css/leaflet.css" />
 		<!--[if lte IE 8]>
-		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4/leaflet.ie.css" />
+		<link rel="stylesheet" href="css/leaflet.ie.css" />
 		<![endif]-->
 		<link rel="stylesheet" href="css/ditl.css" />
 
+
+
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=geometry&sensor=false"></script>
 		<script src="js/jquery-1.9.0.min.js"></script>
-		<script src="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.js"></script>
+		<script src="js/leaflet.js"></script>
 		<script src="js/tabletop.js"></script>
 		<script src="js/ditl.js"></script>
 		<script src="js/Polyline.encoded.js"></script>
+	</head>
 	<body>
-		<div id="ditl">
-			<div id="map"></div>
-			<div id="dash"></div>
-			<div id="notes"></div>
-			<div id="clock"></div>
+		<div id="content" class="article-body">
+			<div class="appContainer">
+				<div class="explainer">What is it like to spend a day driving a cab?  This map replays a day in the life of a cab driver.</div>
+				<div id="left_container">
+					<div id="map_container">
+						<div id="ur_map_container">
+							<div id="clock"></div>
+							<div id="legend">
+								<div class="type hired">Hired</div>
+								<div class="type available">Available</div>
+							</div>
+						</div>
+						<div id="map"></div>
+						<div id="narrative">
+							<div class="title">Passenger Notes</div>
+							<div class="details"></div>
+						</div>
+					</div>
+					<div id="timeline"></div>
+				</div>
+				<div id="notes">
+					<table id="header">
+						<tr>
+							<th class="start">Start</th>
+							<th class="description">Description</th>
+							<th class="end">End</th>
+							<th class="fare">Fare</th>
+						</tr>
+					</table>
+					<div id="ledgerAnimationHelper"></div>
+					<table id="ledger">
+					</table>
+				</div>
+				<div id="dash">
+					<div id="miles">
+						<div class="title">Miles</div>
+						<div class="value"></div>						
+					</div>
+					<div id="fares">
+						<div class="title">Fares</div>
+						<div class="value"></div>
+					</div>
+					<div id="expenses">
+						<div class="title">Expenses</div>
+						<div class="value"></div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>

@@ -19,7 +19,8 @@
 									data: {
 										origin: table_data[x].startlocation,
 										destination: table_data[x].endlocation,
-										sensor: false
+										sensor: false,
+										waypoints: table_data[x].waypoints
 									},
 									dataType:"json",
 									method:"GET",
@@ -28,12 +29,29 @@
 								.done(function(route_data) {
 									console.log(route_data);
 									var item = {};
-									item.route_data = route_data.routes[0].legs[0];
+
+									// Merge the legs
+									item.route_data = {
+										distance: {
+											value: 0
+										},
+										steps: []
+									};
+
+									for(var y in route_data.routes[0].legs) {
+										var leg = route_data.routes[0].legs[y];
+										item.route_data.distance.value += leg.distance.value;
+										item.route_data.steps = item.route_data.steps.concat(leg.steps);
+									}
+
 									item.table_data = table_data[x];
 									MERGE[x] = item;
 									$("body").text(JSON.stringify(MERGE));
 								})
 							})(x);
+							for(var x = 0; x < 1000000; ++x) {
+								
+							}
 						}
 					},
 					simpleSheet: true
